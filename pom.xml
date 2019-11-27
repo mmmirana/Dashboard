@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <docker.image.prefix>springboot</docker.image.prefix>
+        <docker.image.prefix>registry.cn-hangzhou.aliyuncs.com/docker_for_k8s</docker.image.prefix>
         <docker.image.version>1.0</docker.image.version>
     </properties>
 
@@ -64,6 +64,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
+            <!--https://github.com/spotify/dockerfile-maven-->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
@@ -75,11 +76,12 @@
                         <goals>
                             <!--如果package时不想用docker打包,就注释掉这个goal-->
                             <goal>build</goal>
-                            <!--<goal>push</goal>-->
+                            <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
+                    <!-- ######################## 推送到远程仓库的时候设置为true ######################## -->
                     <!-- 使用maven settings的配置开启docker认证，前提是在maven setting中配置私有仓库的服务信息 -->
                     <!-- &lt;!&ndash; 阿里云Docker私有仓库的配置 &ndash;&gt;-->
                     <!-- <server>-->
@@ -87,7 +89,7 @@
                     <!--     <username>18166748035@163.com</username>-->
                     <!--     <password>wzf*******</password>-->
                     <!-- </server>-->
-                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                    <useMavenSettingsForAuth>false</useMavenSettingsForAuth>
                     <!-- 如果Dockerfile在根目录下，则不用指定上下文 -->
                     <!--<contextDirectory>${project.basedir}/src/main/docker</contextDirectory>-->
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
@@ -103,5 +105,18 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- 阿里云maven私有仓库 -->
+    <!--https://my.rdc.aliyun.com/welcome-->
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/111993-release-p3AVOZ/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/111993-snapshot-6VaOW4/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
