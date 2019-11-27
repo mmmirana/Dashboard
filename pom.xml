@@ -98,8 +98,6 @@
                     <buildArgs>
                         <!-- 相对于Dockerfile，maven 打包好的jar包位置 -->
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                        <!-- 放入container容器中的全路径 -->
-                        <APP_JAR_PATH>/mmmirana/application/app.jar</APP_JAR_PATH>
                     </buildArgs>
                 </configuration>
             </plugin>
