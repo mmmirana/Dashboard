@@ -11,9 +11,6 @@ export DOCKER_CONTAINER_NAME="${APP_NAME}"_"${APP_PORT}"
 echo "Jenkins Docker Image      :" $DOCKER_IMAGE_NAME
 echo "Jenkins Docker Container  :" $DOCKER_CONTAINER_NAME
 
-# 切换目录到jenkins设置的<ssh Remote Directory>/<TransfersRemote directory>
-cd /mmmirana/jenkins_jar/springboot_dashboard
-
 # 删除应用
 docker rm -f $DOCKER_CONTAINER_NAME
 # 删除镜像
