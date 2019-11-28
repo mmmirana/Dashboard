@@ -23,9 +23,11 @@ public class HelloController {
 
     @GetMapping({"", "/hello"})
     public Map<String, Object> hello(@RequestParam(defaultValue = "dashboard") String key) {
+        String datetime = DateUtil.format(new Date(), DatePattern.NORM_DATETIME_MS_FORMAT);
+        log.info(datetime);
         Map<String, Object> result = new HashMap<>();
         result.put("port", port);
-        result.put("datetime", DateUtil.format(new Date(), DatePattern.NORM_DATETIME_MS_FORMAT));
+        result.put("datetime", datetime);
         result.put("msg", String.format("hello %s", key));
         return result;
     }

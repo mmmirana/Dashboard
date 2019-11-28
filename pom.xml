@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.mirama</groupId>
     <artifactId>dashboard</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>dashboard</name>
     <description>Demo project for Spring Boot</description>
 
@@ -75,8 +75,8 @@
                         <id>default</id>
                         <goals>
                             <!--如果package时不想用docker打包,就注释掉这个goal-->
-                            <goal>build</goal>
-                            <goal>push</goal>
+                            <!--<goal>build</goal>-->
+                            <!--<goal>push</goal>-->
                         </goals>
                     </execution>
                 </executions>
