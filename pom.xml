@@ -97,6 +97,7 @@
                     <tag>${project.version}</tag>
                     <!-- 自定义参数 -->
                     <buildArgs>
+                        <!---->
                         <!-- app名称-->
                         <APP_NAME>${project.name}</APP_NAME>
                         <!-- maven打包好的jar包名称 -->
