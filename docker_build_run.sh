@@ -12,7 +12,6 @@ echo "Jenkins Docker Image      :" $DOCKER_IMAGE_NAME
 echo "Jenkins Docker Container  :" $DOCKER_CONTAINER_NAME
 
 # 切换目录到jenkins设置的<ssh Remote Directory>/<TransfersRemote directory>
-# shellcheck disable=SC2164
 cd /mmmirana/jenkins_jar/springboot_dashboard
 
 # 删除应用
