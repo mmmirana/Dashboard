@@ -90,14 +90,17 @@
                     <!--     <password>wzf*******</password>-->
                     <!-- </server>-->
                     <useMavenSettingsForAuth>false</useMavenSettingsForAuth>
-                    <!-- 如果Dockerfile在根目录下，则不用指定上下文 -->
-                    <!--<contextDirectory>${project.basedir}/src/main/docker</contextDirectory>-->
+                    <!-- 如果docker是远程服务器，需指定环境变量DOCKER_HOST -->
+                    <!--C:\WINDOWS\system32>echo %DOCKER_HOST%-->
+                    <!--tcp://192.168.237.128:2375-->
                     <repository>${docker.image.prefix}/${project.artifactId}</repository>
                     <tag>${project.version}</tag>
                     <!-- 自定义参数 -->
                     <buildArgs>
-                        <!-- 相对于Dockerfile，maven 打包好的jar包位置 -->
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        <!-- app名称-->
+                        <APP_NAME>${project.name}</APP_NAME>
+                        <!-- maven打包好的jar包名称 -->
+                        <APP_JAR_FILE>${project.build.finalName}.jar</APP_JAR_FILE>
                     </buildArgs>
                 </configuration>
             </plugin>

@@ -6,12 +6,16 @@ MAINTAINER "mmmirana<18166748035@163.com>"
 LABEL app.name="springboot_dashboard"
 LABEL app.version="1.0"
 
+# 获取app名称
+ARG APP_NAME
+# 获取<app>.jar名称
+ARG APP_JAR_FILE
+
 # 指定加载app.jar的位置
-ENV APP_JAR_PATH=/mmmirana/application/app.jar
+ENV FINAL_APP_JAR_PATH=/mmmirana/application/$APP_NAME/$APP_JAR_FILE
 
 # 将上下文的jar放入指定位置
-ARG JAR_FILE
-ADD $JAR_FILE $APP_JAR_PATH
+ADD target/$APP_JAR_FILE $FINAL_APP_JAR_PATH
 
 # 加载app.jar
-ENTRYPOINT java -jar $APP_JAR_PATH
+ENTRYPOINT java -jar $FINAL_APP_JAR_PATH
